@@ -7,10 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+final class ViewController: UIViewController {
+    @IBAction private func showLocalNotification(_ sender: Any) {
+        generateLocalNotification()
+    }
+
+    private func generateLocalNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "初めてのローカル通知"
+        content.body = "通知デビューおめでとうンゴ！"
+        content.sound = UNNotificationSound.default
+
+        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
 
