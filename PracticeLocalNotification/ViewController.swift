@@ -14,12 +14,14 @@ final class ViewController: UIViewController {
 
     private func generateLocalNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "初めてのローカル通知"
-        content.body = "通知デビューおめでとうンゴ！"
+        content.title = "This is title"
+        content.body = "This is body"
+        content.subtitle = "This is subTitle"
         content.sound = UNNotificationSound.default
 
-        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+        let request = UNNotificationRequest(identifier: "FiveSecond", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
-
